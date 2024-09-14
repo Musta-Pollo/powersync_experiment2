@@ -6,4 +6,6 @@ class TodoItems extends Table {
 
   IntColumn get id => integer().autoIncrement()();
   TextColumn get description => text()();
+  TextColumn get description2 => text().nullable()();
+  TextColumn get description3 => text().nullable()();
 }

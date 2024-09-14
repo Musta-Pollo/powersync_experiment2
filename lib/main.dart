@@ -1,11 +1,19 @@
 import 'package:drift/drift.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:powersync_experiment/db/db.dart';
 import 'package:powersync_experiment/module.dart';
 
-void main() {
-  runApp(const ProviderScope(child: MyApp()));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final dir = await getApplicationSupportDirectory();
+  final path = join(dir.path, 'test790.db');
+
+  runApp(ProviderScope(overrides: [
+    dbPathPProvider.overrideWithValue(path),
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

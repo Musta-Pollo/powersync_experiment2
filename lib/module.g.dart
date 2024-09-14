@@ -6,12 +6,26 @@ part of 'module.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$appDatabasePHash() => r'ac9e71181aa05b61ba782fc5a7b39f1775390214';
+String _$dbPathPHash() => r'2d0c3d7cc1508d917d407d3b4d89fad323b954db';
+
+/// See also [dbPathP].
+@ProviderFor(dbPathP)
+final dbPathPProvider = AutoDisposeProvider<String>.internal(
+  dbPathP,
+  name: r'dbPathPProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$dbPathPHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef DbPathPRef = AutoDisposeProviderRef<String>;
+String _$appDatabasePHash() => r'521503428b300b0bdef86462914a3068f5325451';
 
 /// See also [AppDatabaseP].
 @ProviderFor(AppDatabaseP)
 final appDatabasePProvider =
-    NotifierProvider<AppDatabaseP, AppDatabase>.internal(
+    AutoDisposeNotifierProvider<AppDatabaseP, AppDatabase>.internal(
   AppDatabaseP.new,
   name: r'appDatabasePProvider',
   debugGetCreateSourceHash:
@@ -20,7 +34,7 @@ final appDatabasePProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$AppDatabaseP = Notifier<AppDatabase>;
+typedef _$AppDatabaseP = AutoDisposeNotifier<AppDatabase>;
 String _$todoPHash() => r'f50daca10ba469647223996b467652100ed4885a';
 
 /// Copied from Dart SDK

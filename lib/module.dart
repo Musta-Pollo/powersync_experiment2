@@ -6,15 +6,43 @@ import 'package:sqlite_async/sqlite_async.dart';
 
 part 'module.g.dart';
 
-@Riverpod(keepAlive: true)
+//Future<String> checkPath(String dbName) async {
+//  var databasePath = await getDatabasesPath();
+//  String path = join(databasePath, dbName);
+//  if (await Directory(dirname(path)).exists()) {
+//  } else {
+//    try {
+//      await Directory(dirname(path)).create(recursive: true);
+//    } catch (e) {
+//      print(e);
+//    }
+//  }
+//  return path;
+//}
+
+@riverpod
+String dbPathP(DbPathPRef ref) {
+  throw UnimplementedError();
+}
+
+@riverpod
 class AppDatabaseP extends _$AppDatabaseP {
   @override
   AppDatabase build() {
-    final db = SqliteDatabase(path: 'example10.db');
-
-    return AppDatabase(db);
+    final dbPath = ref.read(dbPathPProvider);
+    final db = AppDatabase(SqliteDatabase(path: dbPath));
+    db.e
+    ref.onDispose(() async {
+      await db.close();
+    });
+    return db;
   }
 }
+
+//@riverpod
+//AppDatabase appDatabaseP(AppDatabasePRef ref) {
+//  throw UnimplementedError();
+//}
 
 @riverpod
 class TodoP extends _$TodoP {
