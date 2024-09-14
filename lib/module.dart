@@ -31,7 +31,6 @@ class AppDatabaseP extends _$AppDatabaseP {
   AppDatabase build() {
     final dbPath = ref.read(dbPathPProvider);
     final db = AppDatabase(SqliteDatabase(path: dbPath));
-    db.e
     ref.onDispose(() async {
       await db.close();
     });

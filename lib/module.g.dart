@@ -20,7 +20,7 @@ final dbPathPProvider = AutoDisposeProvider<String>.internal(
 );
 
 typedef DbPathPRef = AutoDisposeProviderRef<String>;
-String _$appDatabasePHash() => r'521503428b300b0bdef86462914a3068f5325451';
+String _$appDatabasePHash() => r'136c299248136f53dffb166dc7da22e4ce91132e';
 
 /// See also [AppDatabaseP].
 @ProviderFor(AppDatabaseP)
